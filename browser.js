@@ -6,7 +6,7 @@ import readBinary from 'parse-bmfont-binary';
 import isBinaryFormat from './lib/is-binary';
 import xtend from 'xtend';
 
-import Buffer from 'buffer/'
+import {Buffer} from 'buffer/index.js'
 
 var xml2 = (function hasXML2() {
   return self.XMLHttpRequest && "withCredentials" in new XMLHttpRequest

@@ -9,7 +9,7 @@ import mime from 'mime';
 var noop = function() {}
 import isBinary from './lib/is-binary';
 
-import Buffer from 'buffer/'
+import {Buffer} from 'buffer/index.js'
 
 function parseFont(file, data, cb) {
   var result, binary
