@@ -1,16 +1,18 @@
-var xhr = require('xhr')
+import xhr from 'xhr';
 var noop = function(){}
-var parseASCII = require('parse-bmfont-ascii')
-var parseXML = require('parse-bmfont-xml')
-var readBinary = require('parse-bmfont-binary')
-var isBinaryFormat = require('./lib/is-binary')
-var xtend = require('xtend')
+import parseASCII from 'parse-bmfont-ascii';
+import parseXML from 'parse-bmfont-xml';
+import readBinary from 'parse-bmfont-binary';
+import isBinaryFormat from './lib/is-binary';
+import xtend from 'xtend';
+
+import Buffer from 'buffer/'
 
 var xml2 = (function hasXML2() {
   return self.XMLHttpRequest && "withCredentials" in new XMLHttpRequest
 })()
 
-module.exports = function(opt, cb) {
+export default function(opt, cb) {
   cb = typeof cb === 'function' ? cb : noop
 
   if (typeof opt === 'string')
@@ -73,7 +75,7 @@ module.exports = function(opt, cb) {
     }
     cb(null, result)
   })
-}
+};
 
 function isArrayBuffer(arr) {
   var str = Object.prototype.toString

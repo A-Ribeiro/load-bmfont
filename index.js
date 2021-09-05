@@ -1,13 +1,15 @@
-var fs = require('fs')
-var url = require('url')
-var path = require('path')
-var request = require('phin')
-var parseASCII = require('parse-bmfont-ascii')
-var parseXML = require('parse-bmfont-xml')
-var readBinary = require('parse-bmfont-binary')
-var mime = require('mime')
+import fs from 'fs';
+import url from 'url';
+import path from 'path';
+import request from 'phin';
+import parseASCII from 'parse-bmfont-ascii';
+import parseXML from 'parse-bmfont-xml';
+import readBinary from 'parse-bmfont-binary';
+import mime from 'mime';
 var noop = function() {}
-var isBinary = require('./lib/is-binary')
+import isBinary from './lib/is-binary';
+
+import Buffer from 'buffer/'
 
 function parseFont(file, data, cb) {
   var result, binary
@@ -32,7 +34,7 @@ function parseFont(file, data, cb) {
   cb(null, result)
 }
 
-module.exports = function loadFont(opt, cb) {
+export default function loadFont(opt, cb) {
   cb = typeof cb === 'function' ? cb : noop
 
   if (typeof opt === 'string') opt = { uri: opt, url: opt }
@@ -50,4 +52,4 @@ module.exports = function loadFont(opt, cb) {
   } else {
     fs.readFile(file, opt, handleData)
   }
-}
+};
